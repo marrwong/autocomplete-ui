@@ -12,7 +12,7 @@ node -v
 ```
 You will see the version of Node.js installed if it has been installed properly.
 
-For Python, you may download them from [here] (https://www.python.org/downloads/)
+For Python, you may download them from [here](https://www.python.org/downloads/)
 
 ## Local Setup (Node.js)
 1) Run the following command. This command installs the http-server package on your machine:
