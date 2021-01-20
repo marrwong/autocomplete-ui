@@ -1,23 +1,19 @@
-const myrequest = request.defaults({
-       baseUrl: "https://github-enterprise.acme-inc.com/api/v3",
-       headers: {
-              accept: "application/vnd.github.v3+json",
-              "user-agent": "octokit-rest.js/17.0.0 octokit-core.js/2.4.2 Node.js/13.6.0 (Windows 10; x64)",
-              authorization: "token 31575f3024ccec08660f7e34c234fffbf5b89595",
-              "content-type": "application/json; charset=utf-8"
-       },
-       org: "my-project",
-       per_page: 100,
-});
-
 const userListFromApi = "";
 var searchParam = "";
 var validResults = {};
 var validResultsFormatted = {};
+var selector = "ul";
 
 async function getUsers() {
        try {
               userListFromApi = await request('GET /search/users', {
+                     baseUrl: "https://github-enterprise.acme-inc.com/api/v3",
+                     headers: {
+                            accept: "application/vnd.github.v3+json",
+                            "user-agent": "octokit-rest.js/17.0.0 octokit-core.js/2.4.2 Node.js/13.6.0 (Windows 10; x64)",
+                            authorization: "token 31575f3024ccec08660f7e34c234fffbf5b89595",
+                            "content-type": "application/json; charset=utf-8"
+                     },
                      q: 'q=',
                      order: "50",
               });
@@ -27,6 +23,7 @@ async function getUsers() {
 
        catch (rejectedValue) {
               console.log("Some error occurred");
+              console.log(rejectedValue);
        }
 }
 
@@ -55,8 +52,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 function updateView() {
 
-       var selector = "ul";
-       let userListFromApi = ['mad', 'matt', 'met', 'matty', 'matthew', 'matthias', 'andy', 'lau'];
+       let userListFromApi = ['mad', 'matt', 'met', 'matty', 'matthew', 'matthias', 'andy', 'lau', 'marcus'];
        //let userListFromApi = getUsers(`q=${searchParam}`);
 
        if (searchParam.length >= 3) {
