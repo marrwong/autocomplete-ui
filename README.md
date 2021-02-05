@@ -1,16 +1,14 @@
 # Autocomplete UI
 This simple webpage allows you to view the implementation of a user interface with autocomplete functionality.
 
-As the user types in a search query, the client will query the GitHub API (via a Spring Boot proxy application) and populate a list of users matching the search term.
+As the user types in a search query, the client will query the [GitHub REST API](https://docs.github.com/en/rest/reference/)search#search-users (via a Spring Boot proxy application) and populate a list of users matching the search term.
 
 ## Pre-Requisites
 The instructions in _'Local Setup'_ assume that **Java 8** and **Maven** have been installed.
 
-Please refer to the following documents for installation and cloning of repository.
-
-* [Steps to Install Java](https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html#zz-1)
-* [Steps to Install Maven](https://maven.apache.org/install.html)
-* [Cloning a Repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
+* [Steps to Install Java - refer to this page](https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html#zz-1)
+* [Steps to Install Maven - refer to this page](https://maven.apache.org/install.html)
+* [Cloning repository - reference](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 
 ## Run locally (on Windows)
 1) Open the command prompt from the Windows Start Menu.
@@ -29,7 +27,7 @@ mvn install
 ```
 mvn spring-boot:run
 ```
-5) Finally, open your internet browser(preferably Chrome/Firefox/Edge/Safari) and enter this URL:
+5) Finally, open your internet browser(Chrome/Firefox/Edge/Safari) and enter this URL:
 ```
 http://localhost:8080/index.html
 ```
@@ -45,12 +43,12 @@ The website should be up and running.
 
 * Maven
 
-* Node.js, npm, Python (prototyping phase)
+* Node.js, npm, Python (prototyping)
 
 ## Design Decisions Made
 * **Responsive** - Multi-device, multi-browser compatible
 
-* **User-friendly** - Clean and uncluttered layout with helpful description (e.g textbox description) and useful functionality (e.g clear current input value in the textbox)
+* **User-friendly** - Clean and uncluttered layout with clear description (e.g textbox description) and functionality (e.g clear textbox)
 
 * **Modern** - Opted to use flat design elements instead of a skeumorphic design style
 
