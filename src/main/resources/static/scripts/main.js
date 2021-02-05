@@ -1,48 +1,52 @@
-const resultSet = "#resultSet";
+const inputField = document.getElementById('inputField');
+const resetButton = document.getElementById('resetButton');
+const resultSetHtml = document.querySelector('#resultSet');
 
-document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener('DOMContentLoaded', () => {
 
-       document.getElementById("inputField").addEventListener("input", (event) => {
-              searchParam = event.target.value;
-              updateView(searchParam);
+       inputField.addEventListener('input', () => {
+              if(inputField.value.length >= 3){
+                     updateView(inputField.value);
+              }
+              else{
+                     resetView();
+              }
        });
 
-       document.getElementById("inputField").addEventListener("focusin", (event) => {
-              searchParam = event.target.value;
-              updateView(searchParam);
+       inputField.addEventListener('focusin', () => {
+              if(inputField.value.length >= 3){
+                     updateView(inputField.value);
+              }
        });
 
-       document.getElementById("inputField").addEventListener("focusout", (event) => {
-              document.querySelector(resultSet).innerHTML = "";
+       inputField.addEventListener('focusout', () => {
+              resetView();
        });
 
-       document.getElementById("resetButton").addEventListener("click", (event) => {
-              document.getElementById("inputField").value = "";
-              document.querySelector(resultSet).innerHTML = "";
+       resetButton.addEventListener('click', () => {
+              inputField.value = '';
+              resetView();
        });
 
 });
 
 function updateView(searchParam) {
 
-       if (searchParam.length >= 3) {
+       var validResults = async function (searchParam) {
 
-              var validResults = async function (searchParam) {
+              await fetch('./api/users/' + searchParam)
+              .then(response => response.json())
+              .then(data => {
+                     var view = data.items.map(element => 
+                            `<a href="#" class="list-group-item list-group-item-action">@${element.login}</a>`);
+                            resultSetHtml.innerHTML = view.join('');
+                     })
+              .catch(console.error);
 
-                     await fetch("./api/users/" + searchParam)
-                     .then(response => response.json())
-                     .then(data => {
-                            var view = data.items.map(element => 
-                                   `<a href="#" class="list-group-item list-group-item-action">@${element.login}</a>`);
-                            document.querySelector(resultSet).innerHTML = view.join("");
-                            })
-                     .catch(console.error);
+       }(searchParam);
 
-              }(searchParam);
-       }
+}
 
-       else {
-              document.querySelector(resultSet).innerHTML = "";
-       }
-
+function resetView() {
+       resultSetHtml.innerHTML = '';
 }
