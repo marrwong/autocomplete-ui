@@ -1,7 +1,7 @@
 # Autocomplete UI
 This simple webpage allows you to view the implementation of a user interface with autocomplete functionality.
 
-As the user types in a search query, the client will query the [GitHub REST API](https://docs.github.com/en/rest/reference/)search#search-users (via a Spring Boot proxy application) and populate a list of users matching the search term.
+As the user types in a search query, the client will query the [GitHub REST API](https://docs.github.com/en/rest/reference/search#search-users) (via a Spring Boot proxy application) and populate a list of users matching the search term.
 
 ## Pre-Requisites
 The instructions in _'Local Setup'_ assume that **Java 8** and **Maven** have been installed.
